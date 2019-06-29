@@ -1,0 +1,47 @@
+server:
+  port: 6666
+
+spring:
+    datasource:
+        name: druid      #数据源名称
+        url: jdbc:mysql://39.96.78.91/${dbName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&&serverTimezone=GMT%2B8
+        username: gd
+        password: "@Goodo123"
+        platform: mysql
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # 配置监控统计拦截的filters
+        filters: stat
+        # 初始化数据库连接池最大激活数,初始化大小，最小空闲数
+        maxActive: 20
+        initialSize: 1
+        minIdle: 1
+        # 配置获取连接等待超时的时间
+        maxWait: 60000
+        # 配置检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        #validationQuery是用来验证数据库连接的查询语句，mysql固定为select 1
+        validationQuery: select 1
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.gd.data
+  configLocation: classpath:mybatis-config.xml
+#pagehelper分页插件
+
+dbName:
+    YTA5SY_01_0611
+
+actionToken:
+    2157BC59A641705228A76AE4C25754A008E941F2453FEDBFCF9D4097F1BDBF4A17FEE8450E0F825949E2A5B9ACA90FF4E77338EE48F22B45B14CC6BDD5721EDF
