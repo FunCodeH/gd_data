@@ -45,3 +45,16 @@ dbName:
 
 actionToken:
     2157BC59A641705228A76AE4C25754A008E941F2453FEDBFCF9D4097F1BDBF4A17FEE8450E0F825949E2A5B9ACA90FF4E77338EE48F22B45B14CC6BDD5721EDF
+
+#logging:
+#  config: classpath:logback-spring.xml
+#  path: D:\mycode\logs
+
+#log4j:
+#  appender:
+#    logfile:
+#logging:
+#  config: classpath:log4j2.xml
+#      File: D:\mycode\logs\
+
+LOG_HOME: D:\mycode\logs\
