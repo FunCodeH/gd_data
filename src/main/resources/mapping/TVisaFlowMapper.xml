@@ -196,7 +196,7 @@
   </insert>
   <select id="selectVisaFlows" resultMap="BaseResultMap">
     SELECT
-      update_flow, sub_amt,oper_date
+      update_flow, sub_amt,oper_date,branch_no
     FROM t_visa_flow
     where 1=1
     <if test="date != null">

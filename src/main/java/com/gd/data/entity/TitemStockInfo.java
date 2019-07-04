@@ -25,4 +25,6 @@ public class TitemStockInfo {
     BigDecimal itemVipPrice;
     String itemSupNo;
     Integer stockQty;
+    String branchNo;
+    Date createTime;
 }

@@ -683,7 +683,9 @@
         a.item_sale_price as itemSalePrice,
         a.item_vip_price as itemVipPrice,
         a.item_sup_no as itemSupNo,
-        sum(b.stock_qty) as stockQty
+        sum(b.stock_qty) as stockQty,
+        a.create_date as createTime,
+        a.branch_no as branchNo
         from t_item_info a, tmp_branch_stock b
         where a.item_no = b.item_no
         <if test="date != null">
@@ -694,7 +696,8 @@
   <select id="selectTitemStock" resultType="com.gd.data.entity.TitemStock">
     select a.item_barcode as itemBarcode,
     (sum(b.stock_qty) - sum(b.sale_qty) - sum(b.sending_qty)) as  realQty,
-    a.item_in_price as stockAmt
+    a.item_in_price as stockAmt,
+    a.branch_no as branchNo
     from t_item_info a, tmp_branch_stock b
     where a.item_no = b.item_no
     group by a.item_no

@@ -18,5 +18,6 @@ public class TOrderDetail {
     Date saleTime;
     String dispNo;
     String vipNo;
+    String branchNo;
 
 }

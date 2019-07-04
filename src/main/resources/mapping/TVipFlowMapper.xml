@@ -265,7 +265,7 @@
   </insert>
   <select id="selectCarPayList" resultMap="BaseResultMap">
     SELECT
-    update_flow, vip_dispno, sales_amt,oper_date
+    update_flow, vip_dispno, sales_amt,oper_date, branch_no
     FROM t_vip_flow where vip_oper_type = '31'
     <if test="date != null">
       and oper_date > #{date,jdbcType=TIMESTAMP}

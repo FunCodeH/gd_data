@@ -16,4 +16,5 @@ public class TPosSale {
     String saleMan;
     String jh;
     String userId;
+    String branchNo;
 }

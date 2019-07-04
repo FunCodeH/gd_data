@@ -417,7 +417,7 @@
   </insert>
 
   <select id="selectSaleDetail" resultType="com.gd.data.entity.TPosSale">
-    SELECT CONCAT(REPLACE(a.sheet_no,"-",""), a.sheet_sort) as id, b.sale_time as saleTime, a.sale_amt as saleAmt, a.sale_qty as saleQty,  a.sheet_no as sheetNo, a.sale_barcode as saleBarcode, a.sale_man as saleMan,  b.jh as jh, b.user_id as userId from  t_pos_sale_detail a  LEFT JOIN t_pos_sale_master b on b.sheet_no = a.sheet_no
+    SELECT CONCAT(REPLACE(a.sheet_no,"-",""), a.sheet_sort) as id, b.sale_time as saleTime, a.sale_amt as saleAmt, a.sale_qty as saleQty,  a.sheet_no as sheetNo, a.sale_barcode as saleBarcode, a.sale_man as saleMan,  b.jh as jh, b.user_id as userId, b.branch_no as branchNo from  t_pos_sale_detail a  LEFT JOIN t_pos_sale_master b on b.sheet_no = a.sheet_no
     <if test="date != null">
       where sale_time > #{date,jdbcType=TIMESTAMP}
     </if>
@@ -425,7 +425,7 @@
   </select>
 
   <select id="selectOrderDetail" resultType="com.gd.data.entity.TOrderDetail">
-  SELECT REPLACE(a.sheet_no,"-","") as id, a.pos_total_amt as posTotalAmt, b.payment_no as paymentNo, a.sale_time as saleTime , c.vip_dispno as dispNo, a.vip_no as vipNo
+  SELECT REPLACE(a.sheet_no,"-","") as id, a.pos_total_amt as posTotalAmt, b.payment_no as paymentNo, a.sale_time as saleTime , c.vip_dispno as dispNo, a.vip_no as vipNo, a.branch_no as branchNo
   from  t_pos_sale_master a LEFT JOIN t_pos_sale_payment b on a.sheet_no = b.sheet_no and b.sheet_sort=1  LEFT JOIN t_vip_info c on
   a.vip_no = c.vip_no
   <if test="date != null">

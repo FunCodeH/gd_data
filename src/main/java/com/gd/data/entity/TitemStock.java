@@ -14,4 +14,5 @@ public class TitemStock {
     String itemBarcode;
     BigDecimal realQty;
     BigDecimal stockAmt;
+    String branchNo;
 }
