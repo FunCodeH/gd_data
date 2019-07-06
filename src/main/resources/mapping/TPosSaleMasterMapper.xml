@@ -417,7 +417,7 @@
   </insert>
 
   <select id="selectSaleDetail" resultType="com.gd.data.entity.TPosSale">
-    SELECT CONCAT(REPLACE(a.sheet_no,"-",""), a.sheet_sort) as id, b.sale_time as saleTime, a.sale_amt as saleAmt, a.sale_qty as saleQty,  a.sheet_no as sheetNo, a.sale_barcode as saleBarcode, a.sale_man as saleMan,  b.jh as jh, b.user_id as userId, b.branch_no as branchNo from  t_pos_sale_detail a  LEFT JOIN t_pos_sale_master b on b.sheet_no = a.sheet_no
+    SELECT CONCAT(REPLACE(a.sheet_no,"-",""), a.sheet_sort) as id, b.sale_time as saleTime, a.sale_amt as saleAmt, a.sale_qty as saleQty,  a.sheet_no as sheetNo, a.sale_barcode as saleBarcode, a.sale_man as saleMan,  b.jh as jh, b.user_id as userId, b.branch_no as branchNo , b.pos_type as type , a.org_price as giveAmt from  t_pos_sale_detail a  LEFT JOIN t_pos_sale_master b on b.sheet_no = a.sheet_no
     <if test="date != null">
       where sale_time > #{date,jdbcType=TIMESTAMP}
     </if>

@@ -173,15 +173,27 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             posSale.add(tPosSale.getId());
             posSale.add("0");
             posSale.add(simpleDateFormat.format(tPosSale.getSaleTime()));
-            posSale.add(tPosSale.getSaleAmt().doubleValue());
+            if(tPosSale.getType().equals("1")) {
+                posSale.add(tPosSale.getSaleAmt().doubleValue());
+            }else{
+                posSale.add(BigDecimal.ZERO.doubleValue());
+            }
             posSale.add(tPosSale.getSaleQty().doubleValue());
             posSale.add(tPosSale.getSheetNo());
             posSale.add(tPosSale.getSaleBarcode());
             posSale.add(tPosSale.getSaleMan());
             posSale.add(tPosSale.getJh());
-            posSale.add(BigDecimal.ZERO.doubleValue());
+            if(tPosSale.getType().equals("1")) {
+                posSale.add(BigDecimal.ZERO.doubleValue());
+            }else{
+                posSale.add(tPosSale.getGiveAmt().doubleValue());
+            }
             posSale.add(tPosSale.getUserId());
-            posSale.add("A");
+            if(tPosSale.getType().equals("1")) {
+                posSale.add("A");
+            }else{
+                posSale.add("C");
+            }
             posSale.add(tPosSale.getBranchNo());
             saleDetailDate = tPosSale.getSaleTime();
             posSales.add(posSale);

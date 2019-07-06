@@ -17,4 +17,6 @@ public class TPosSale {
     String jh;
     String userId;
     String branchNo;
+    String type;
+    BigDecimal giveAmt;
 }

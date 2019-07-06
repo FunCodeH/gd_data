@@ -4,9 +4,9 @@ server:
 spring:
     datasource:
         name: druid      #数据源名称
-        url: jdbc:mysql://39.96.78.91/${dbName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&&serverTimezone=GMT%2B8
-        username: gd
-        password: "@Goodo123"
+        url: jdbc:mysql://rm-2zeedrx4ao895w03jko.mysql.rds.aliyuncs.com/${dbName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&&serverTimezone=GMT%2B8
+        username: kaifa
+        password: Goodo123
         platform: mysql
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
@@ -41,10 +41,10 @@ mybatis:
 #pagehelper分页插件
 
 dbName:
-    YTA5SY_01_0611
+  gd_subdb_1ei15g1
 
 actionToken:
-    2157BC59A641705228A76AE4C25754A008E941F2453FEDBFCF9D4097F1BDBF4A17FEE8450E0F825949E2A5B9ACA90FF4E77338EE48F22B45B14CC6BDD5721EDF
+  2157BC59A64170524A0DB19698BD23B6F95EE4256DA384C263250D61EFBDE3F8DDBDDDB2E143851D09599311289298E061AE632211793A4C1433BAE204DDD134
 
 #logging:
 #  config: classpath:logback-spring.xml
