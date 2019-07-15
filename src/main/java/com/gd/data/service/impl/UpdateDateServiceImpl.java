@@ -70,7 +70,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             JSONArray cashier = new JSONArray();
             cashier.add(user.getUserId());
             cashier.add(user.getUserName());
-            cashier.add(user.getBranchNo());
+            cashier.add(user.getBranchNo().length() > 2 ? user.getBranchNo().substring(0,2): user.getBranchNo());
             cashiers.add(cashier);
         }
         return JSONObject.toJSONString(cashiers);
@@ -157,7 +157,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             visaFlow.add(tVisaFlow.getUpdateFlow().toString());
             visaFlow.add(tVisaFlow.getSubAmt().doubleValue());
             visaFlow.add(simpleDateFormat.format(tVisaFlow.getOperDate()));
-            visaFlow.add(tVisaFlow.getBranchNo());
+            visaFlow.add(tVisaFlow.getBranchNo().length() > 2 ? tVisaFlow.getBranchNo().substring(0,2): tVisaFlow.getBranchNo());
             rechargeRecordDate = tVisaFlow.getOperDate();
             tVisaFlows.add(visaFlow);
         }
@@ -194,7 +194,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             }else{
                 posSale.add("C");
             }
-            posSale.add(tPosSale.getBranchNo());
+            posSale.add(tPosSale.getBranchNo().length() > 2 ? tPosSale.getBranchNo().substring(0,2):tPosSale.getBranchNo());
             saleDetailDate = tPosSale.getSaleTime();
             posSales.add(posSale);
         }
@@ -211,7 +211,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             vipFlow.add(tVipFlow.getVipDispno());
             vipFlow.add(tVipFlow.getSalesAmt());
             vipFlow.add(simpleDateFormat.format(tVipFlow.getOperDate()));
-            vipFlow.add(tVipFlow.getBranchNo());
+            vipFlow.add(tVipFlow.getBranchNo().length() > 2 ? tVipFlow.getBranchNo().substring(0,2):tVipFlow.getBranchNo());
             carPayDate = tVipFlow.getOperDate();
             tVipFlows.add(vipFlow);
         }
@@ -228,7 +228,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             vipInfo.add(tVipInfo.getVipName());
             vipInfo.add(tVipInfo.getVipMobil1());
             vipInfo.add(simpleDateFormat.format(tVipInfo.getCreateDate()));
-            vipInfo.add(tVipInfo.getBranchNo());
+            vipInfo.add(tVipInfo.getBranchNo().length() > 2 ? tVipInfo.getBranchNo().substring(0,2):tVipInfo.getBranchNo());
             tvipInfos.add(vipInfo);
         }
         return JSONObject.toJSONString(tvipInfos);
@@ -253,7 +253,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             info.add(stockInfo.getItemSalePrice().floatValue());
             info.add(stockInfo.getItemVipPrice().floatValue());
             info.add(stockInfo.getItemSupNo());
-            info.add(stockInfo.getBranchNo());
+            info.add(stockInfo.getBranchNo().length() > 2 ? stockInfo.getBranchNo().substring(0,2):stockInfo.getBranchNo());
             info.add(simpleDateFormat.format(stockInfo.getCreateTime()));
             itemInfoDate = stockInfo.getModifyDate();
             infos.add(info);
@@ -270,7 +270,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             stock.add(titemStock.getItemBarcode());
             stock.add(titemStock.getRealQty().floatValue());
             stock.add(titemStock.getStockAmt().floatValue());
-            stock.add(titemStock.getBranchNo());
+            stock.add(titemStock.getBranchNo().length() > 2 ? titemStock.getBranchNo().substring(0,2):titemStock.getBranchNo());
             stocks.add(stock);
         }
         return JSONObject.toJSONString(stocks);
@@ -292,7 +292,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
             tOrderDetail.add(detail.getPosTotalAmt().doubleValue());
             tOrderDetail.add(detail.getVipNo());
             tOrderDetail.add(detail.getDispNo());
-            tOrderDetail.add(detail.getBranchNo());
+            tOrderDetail.add(detail.getBranchNo().length() > 2 ? detail.getBranchNo().substring(0,2):detail.getBranchNo());
             orderDate = detail.getSaleTime();
             tOrderDetails.add(tOrderDetail);
         }
@@ -304,12 +304,14 @@ public class UpdateDateServiceImpl implements UpdateDateService {
         List<TBranchfo> branchfos = tBranchfoMapper.selectBranchInfo();
         JSONArray tBranchfos = new JSONArray();
         for (TBranchfo tBranchfo : branchfos) {
-            JSONArray branchinfo = new JSONArray();
-            branchinfo.add(tBranchfo.getBranchName());
-            branchinfo.add(tBranchfo.getBranchMan());
-            branchinfo.add(tBranchfo.getBranchAddress());
-            branchinfo.add(tBranchfo.getBranchNo());
-            tBranchfos.add(branchinfo);
+            if(tBranchfo.getBranchNo().length() <= 2) {
+                JSONArray branchinfo = new JSONArray();
+                branchinfo.add(tBranchfo.getBranchName());
+                branchinfo.add(tBranchfo.getBranchMan());
+                branchinfo.add(tBranchfo.getBranchAddress());
+                branchinfo.add(tBranchfo.getBranchNo());
+                tBranchfos.add(branchinfo);
+            }
         }
         return JSONObject.toJSONString(tBranchfos);
     }
@@ -317,5 +319,7 @@ public class UpdateDateServiceImpl implements UpdateDateService {
     public static void main(String[] args) {
         System.out.println(Long.parseLong(("190626000100001".substring(0,6)) + ("190626000100001".substring(10,15))));
 //        190626000100001
+        String str = "1";
+        System.out.println(str.length() > 2 ? str.substring(0,2): str);
     }
 }
